@@ -2,7 +2,7 @@ module client
 
 go 1.21.4
 
-require github.com/Anhbman/microservice-server-cake v0.0.0-20240824170721-25fd5f2fbf12
+require github.com/Anhbman/microservice-server-cake v0.0.0-20240825140353-89c66b924ff8
 
 require (
 	github.com/joho/godotenv v1.5.1 // indirect
@@ -10,6 +10,7 @@ require (
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/rs/xid v1.6.0 // indirect
 	github.com/twitchtv/twirp v8.1.3+incompatible // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect

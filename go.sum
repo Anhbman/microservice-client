@@ -2,6 +2,8 @@ github.com/Anhbman/microservice-server-cake v0.0.0-20240823165808-905b1f1ea754 h
 github.com/Anhbman/microservice-server-cake v0.0.0-20240823165808-905b1f1ea754/go.mod h1:/mX4zc1TDAis8u2QyeW91SEc+u0uNoUfIWrW1jHdwSA=
 github.com/Anhbman/microservice-server-cake v0.0.0-20240824170721-25fd5f2fbf12 h1:V8e9fAAPtzAzYl/r3bmXLrmLUh7Wi7W3sI6mMFBFS1U=
 github.com/Anhbman/microservice-server-cake v0.0.0-20240824170721-25fd5f2fbf12/go.mod h1:DHpquCFV40u/28yOO/O5Yy0E8pRNLpQn1ETaefOc8JQ=
+github.com/Anhbman/microservice-server-cake v0.0.0-20240825140353-89c66b924ff8 h1:MlDvZ/x48f2HJyHoLKBS0yfqV6sw92d1657xLfhY7Bw=
+github.com/Anhbman/microservice-server-cake v0.0.0-20240825140353-89c66b924ff8/go.mod h1:DHpquCFV40u/28yOO/O5Yy0E8pRNLpQn1ETaefOc8JQ=
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
@@ -17,6 +19,8 @@ github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWE
 github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+github.com/rs/xid v1.6.0 h1:fV591PaemRlL6JfRxGDEPl69wICngIQ3shQtzfy2gxU=
+github.com/rs/xid v1.6.0/go.mod h1:7XoLgs4eV+QndskICGsho+ADou8ySMSjJKDIan90Nz0=
 github.com/twitchtv/twirp v8.1.3+incompatible h1:+F4TdErPgSUbMZMwp13Q/KgDVuI7HJXP61mNV3/7iuU=
 github.com/twitchtv/twirp v8.1.3+incompatible/go.mod h1:RRJoFSAmTEh2weEqWtpPE3vFK5YBhA6bqp2l1kfCC5A=
 github.com/valyala/bytebufferpool v1.0.0 h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6KllzawFIhcdPw=

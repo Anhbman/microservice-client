@@ -45,6 +45,7 @@ func (r *Router) Register(e *echo.Echo) {
 	// register auth routes
 	cake := apiGroup.Group("/cakes")
 	cake.GET("/:id", r.Handler.GetByID)
+	cake.POST("", r.Handler.Create)
 
 
 	// Serve static files (profile pictures) from the 'picture' directory.
