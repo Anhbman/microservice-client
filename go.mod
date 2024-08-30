@@ -2,7 +2,7 @@ module client
 
 go 1.21.4
 
-require github.com/Anhbman/microservice-server-cake v0.0.0-20240825140353-89c66b924ff8
+require github.com/Anhbman/microservice-server-cake v0.0.0-20240830150247-b0912cf12f34
 
 require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect

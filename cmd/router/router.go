@@ -46,6 +46,7 @@ func (r *Router) Register(e *echo.Echo) {
 	cake := apiGroup.Group("/cakes")
 	cake.GET("/:id", r.Handler.GetByID)
 	cake.POST("", r.Handler.Create)
+	cake.GET("/search", r.Handler.Search)
 
 
 	// Serve static files (profile pictures) from the 'picture' directory.
