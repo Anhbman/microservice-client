@@ -6,6 +6,8 @@ github.com/Anhbman/microservice-server-cake v0.0.0-20240825140353-89c66b924ff8 h
 github.com/Anhbman/microservice-server-cake v0.0.0-20240825140353-89c66b924ff8/go.mod h1:DHpquCFV40u/28yOO/O5Yy0E8pRNLpQn1ETaefOc8JQ=
 github.com/Anhbman/microservice-server-cake v0.0.0-20240830150247-b0912cf12f34 h1:6aFE4ZGhxhh1w7IA/z2uRG2dxQzrF5R+0L6JFtGahVg=
 github.com/Anhbman/microservice-server-cake v0.0.0-20240830150247-b0912cf12f34/go.mod h1:DHpquCFV40u/28yOO/O5Yy0E8pRNLpQn1ETaefOc8JQ=
+github.com/Anhbman/microservice-server-cake v0.0.0-20240830164341-f18735eb4eba h1:KRVQUZCv5xHlynLx2KLJJ6ni9zS0oSZqrqr/iK35LIc=
+github.com/Anhbman/microservice-server-cake v0.0.0-20240830164341-f18735eb4eba/go.mod h1:DHpquCFV40u/28yOO/O5Yy0E8pRNLpQn1ETaefOc8JQ=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/golang-jwt/jwt v3.2.2+incompatible h1:IfV12K8xAKAnZqdXVzCZ+TOjboZ2keLg81eXfW3O+oY=

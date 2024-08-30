@@ -104,3 +104,46 @@ func (h *Handler) Search(ctx echo.Context) error {
 
 	return ctx.JSON(http.StatusOK, cakes)
 }
+
+func (h *Handler) UpdateByID(ctx echo.Context) error {
+	idStr := ctx.Param("id")
+	if idStr == "" {
+		return ctx.JSON(http.StatusBadRequest, "id is required")
+	}
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		return ctx.JSON(http.StatusBadRequest, "id must be a number")
+	}
+	cake := service.Cake{}
+	cake.Id = int64(id)
+	cake.Name = ctx.FormValue("name")
+	if cake.Name == "" {
+		return ctx.JSON(http.StatusBadRequest, "name is required")
+	}
+	cake.Description = ctx.FormValue("description")
+	if cake.Description == "" {
+		return ctx.JSON(http.StatusBadRequest, "description is required")
+	}
+	cake.Price, _ = strconv.ParseInt(ctx.FormValue("price"), 10, 64)
+	if cake.Price == 0 {
+		return ctx.JSON(http.StatusBadRequest, "price is required")
+	}
+	file, err := ctx.FormFile("image")
+	if err != nil {
+		log.Errorf("Invalid data!")
+	}
+
+	fileName, err := utils.SaveFile(file)
+	if err != nil {
+		log.Errorf("Failed to save file!")
+	} else {
+		cake.ImageUrl = fileName
+	}
+
+	newCake, err := h.serviceClient.UpdateCake(ctx.Request().Context(), &cake)
+	if err != nil {
+		return ctx.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	return ctx.JSON(http.StatusOK, newCake)
+}
