@@ -3,8 +3,9 @@ package router
 import (
 	"os"
 
-	"github.com/labstack/echo/v4"
 	"client/cmd/handler"
+
+	"github.com/labstack/echo/v4"
 )
 
 type Router struct {
@@ -39,7 +40,6 @@ func (r *Router) Register(e *echo.Echo) {
 	// cake.DELETE("/:id", h.DeleteByID)
 	// cake.PUT("/:id", h.UpdateByID)
 
-
 	apiGroup := e.Group("/api")
 
 	// register auth routes
@@ -49,6 +49,9 @@ func (r *Router) Register(e *echo.Echo) {
 	cake.GET("/search", r.Handler.Search)
 	cake.PUT("/:id", r.Handler.UpdateByID)
 
+	// register user routes
+	user := apiGroup.Group("/users")
+	user.POST("/register", r.Handler.RegisterUser)
 
 	// Serve static files (profile pictures) from the 'picture' directory.
 	e.Static("/picture", os.Getenv("PATH_TO_UPLOAD"))
