@@ -25,7 +25,7 @@ func (r *Router) Register(e *echo.Echo) {
 	apiGroup := e.Group("/api")
 
 	// register auth routes
-	cake := apiGroup.Group("/cakes")
+	cake := apiGroup.Group("/cakes", jwtMiddleware)
 	cake.GET("/:id", r.Handler.GetByID)
 	cake.POST("", r.Handler.Create)
 	cake.GET("/search", r.Handler.Search)

@@ -56,11 +56,11 @@ func JWTWithConfig(config JWTConfig) echo.MiddlewareFunc {
 				return config.SigningKey, nil
 			})
 			if err != nil {
-				fmt.Println("err: ", err)
+				log.Default().Println("err: ", err)
 				return ctx.JSON(http.StatusForbidden, "Forbidden")
 			}
 			if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-				userID := uint(claims["userId"].(float64))
+				userID := uint64(claims["userId"].(float64))
 				ctx.Set("userId", userID)
 				return hf(ctx)
 			} else {

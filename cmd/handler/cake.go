@@ -49,7 +49,7 @@ func (h *Handler) Create(ctx echo.Context) error {
 
 	fileName, err := utils.SaveFile(file)
 	if err != nil {
-		log.Errorf("Failed to save file!")
+		log.Errorf("Failed to save file!", err)
 	} else {
 		cake.ImageUrl = fileName
 	}

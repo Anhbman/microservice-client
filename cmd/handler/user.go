@@ -9,6 +9,15 @@ import (
 	"github.com/twitchtv/twirp"
 )
 
+type (
+	loginResponse struct {
+		Token string `json:"token"`
+		Id    uint64 `json:"id"`
+		Name  string `json:"name"`
+		Email string `json:"email"`
+	}
+)
+
 func (h *Handler) RegisterUser(ctx echo.Context) error {
 	req := &service.RegisterUserRequest{}
 	if err := ctx.Bind(req); err != nil {
@@ -46,7 +55,7 @@ func (h *Handler) LoginUser(ctx echo.Context) error {
 
 	if req.GetEmail() == "" || req.GetPassword() == "" {
 		return ctx.JSON(http.StatusBadRequest, "email and password are required")
-		
+
 	}
 
 	user, err := h.serviceClient.LoginUser(ctx.Request().Context(), req)
@@ -58,7 +67,12 @@ func (h *Handler) LoginUser(ctx echo.Context) error {
 		return ctx.JSON(http.StatusInternalServerError, err.Error())
 	}
 	token := jwt.GenerateJWT(uint(user.GetUser().Id))
-	return ctx.JSON(http.StatusOK, token)
+	return ctx.JSON(http.StatusOK, loginResponse{
+		Token: token,
+		Id:    user.GetUser().GetId(),
+		Name:  user.GetUser().GetName(),
+		Email: user.GetUser().GetEmail(),
+	})
 }
 
 func (h *Handler) CurrentUser(ctx echo.Context) error {
