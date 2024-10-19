@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"client/cmd/handler"
+	"client/cmd/jwt"
 
 	"github.com/labstack/echo/v4"
 )
@@ -19,26 +20,7 @@ func NewRouter(h *handler.Handler) *Router {
 }
 
 func (r *Router) Register(e *echo.Echo) {
-	// jwtMiddleware := jwt.JWT(utils.JWTSecret)
-	// create api group
-	// apiGroup := e.Group("/api")
-	// auth := apiGroup.Group("/auth")
-	// auth.POST("/register", h.SignUp)
-	// auth.POST("/login", h.Login)
-
-	// create user group
-	// user := apiGroup.Group("/users", jwtMiddleware)
-	// user.GET("/current", h.CurrentUser)
-
-	// // create cake group
-	// cake := apiGroup.Group("/cakes", jwtMiddleware)
-	// // cake routes
-	// cake.POST("", h.Create)
-	// // cake.GET("", h.Get)
-	// cake.GET("/search", h.Search)
-	// cake.GET("/:id", h.GetByID)
-	// cake.DELETE("/:id", h.DeleteByID)
-	// cake.PUT("/:id", h.UpdateByID)
+	jwtMiddleware := jwt.JWT()
 
 	apiGroup := e.Group("/api")
 
@@ -49,9 +31,14 @@ func (r *Router) Register(e *echo.Echo) {
 	cake.GET("/search", r.Handler.Search)
 	cake.PUT("/:id", r.Handler.UpdateByID)
 
+	// register auth routes
+	auth := apiGroup.Group("/auth")
+	auth.POST("/register", r.Handler.RegisterUser)
+	auth.POST("/login", r.Handler.LoginUser)
+
 	// register user routes
-	user := apiGroup.Group("/users")
-	user.POST("/register", r.Handler.RegisterUser)
+	user := apiGroup.Group("/users", jwtMiddleware)
+	user.GET("/current", r.Handler.CurrentUser)
 
 	// Serve static files (profile pictures) from the 'picture' directory.
 	e.Static("/picture", os.Getenv("PATH_TO_UPLOAD"))

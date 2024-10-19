@@ -1,5 +1,7 @@
-github.com/Anhbman/microservice-server-cake v0.0.0-20241018172814-71e120097655 h1:ojX1YxOqhZoNfEPNIaIKZ4j90iT3/0k6BR7Xg2X9RE0=
-github.com/Anhbman/microservice-server-cake v0.0.0-20241018172814-71e120097655/go.mod h1:xcUMbTLtwY0t0l+eeGN/xrJig+ckH53w/Owra25KS6k=
+github.com/Anhbman/microservice-server-cake v0.0.0-20241018183108-b3cd27b71a57 h1:ldUTR2dKmSalT8dJYTd3U7yHTG734FPuuECs0K+lHT4=
+github.com/Anhbman/microservice-server-cake v0.0.0-20241018183108-b3cd27b71a57/go.mod h1:xcUMbTLtwY0t0l+eeGN/xrJig+ckH53w/Owra25KS6k=
+github.com/Anhbman/microservice-server-cake v0.0.0-20241019054300-77fcb9b452fb h1:bE8Upy56X6Hy07Rg2i+Ofly8X7q0vtBf3zkM9w+sz4Q=
+github.com/Anhbman/microservice-server-cake v0.0.0-20241019054300-77fcb9b452fb/go.mod h1:xcUMbTLtwY0t0l+eeGN/xrJig+ckH53w/Owra25KS6k=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
