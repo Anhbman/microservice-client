@@ -41,7 +41,7 @@ func (h *Handler) Create(ctx echo.Context) error {
 	if cake.Price == 0 {
 		return ctx.JSON(http.StatusBadRequest, "price is required")
 	}
-	cake.UserId = 5
+	cake.UserId = userIdFromToken(ctx)
 	file, err := ctx.FormFile("image")
 	if err != nil {
 		log.Errorf("Invalid data!")
@@ -94,7 +94,8 @@ func (h *Handler) Search(ctx echo.Context) error {
 	}
 
 	cakes, err := h.serviceClient.SearchCake(ctx.Request().Context(), &service.SearchCakeRequest{
-		Name: name,
+		Name:     name,
+		UserId:   int64(userIdFromToken(ctx)),
 		Page:     int64(page),
 		PageSize: int64(pageSize),
 	})

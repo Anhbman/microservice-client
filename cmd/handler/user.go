@@ -63,7 +63,7 @@ func (h *Handler) LoginUser(ctx echo.Context) error {
 
 func (h *Handler) CurrentUser(ctx echo.Context) error {
 	id := userIdFromToken(ctx)
-	user, err := h.serviceClient.GetUserById(ctx.Request().Context(), &service.GetUserByIdRequest{Id: uint64(id)})
+	user, err := h.serviceClient.GetUserById(ctx.Request().Context(), &service.GetUserByIdRequest{Id: id})
 	if err != nil {
 		twerr, ok := err.(twirp.Error)
 		if ok {
@@ -74,8 +74,8 @@ func (h *Handler) CurrentUser(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, user)
 }
 
-func userIdFromToken(ctx echo.Context) uint {
-	id, ok := ctx.Get("userId").(uint)
+func userIdFromToken(ctx echo.Context) uint64 {
+	id, ok := ctx.Get("userId").(uint64)
 	if !ok {
 		return 0
 	}
