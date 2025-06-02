@@ -1,6 +1,6 @@
 module client
 
-go 1.21.4
+go 1.24.3
 
 require (
 	github.com/Anhbman/microservice-server-cake v0.0.0-20241019054300-77fcb9b452fb
