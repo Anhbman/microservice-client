@@ -1,0 +1,11 @@
+version: '3'
+services:
+  cake-client:
+    container_name: cake-client
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - 8080:8083
+    env_file:
+        - ../.env
