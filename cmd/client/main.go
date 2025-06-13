@@ -1,17 +1,17 @@
 package main
 
 import (
-	"client/cmd/common"
-	"client/cmd/handler"
-	"client/cmd/router"
+	"client/common"
+	"client/handler"
+	"client/router"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/Anhbman/microservice-server-cake/rpc/service"
-	"github.com/labstack/echo/v4/middleware"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {

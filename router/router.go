@@ -1,10 +1,9 @@
 package router
 
 import (
+	"client/handler"
+	"client/jwt"
 	"os"
-
-	"client/cmd/handler"
-	"client/cmd/jwt"
 
 	"github.com/labstack/echo/v4"
 )
