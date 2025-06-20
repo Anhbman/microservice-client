@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"client/jwt"
+	jwt "client/internal/auth"
 	"net/http"
 
 	"github.com/Anhbman/microservice-server-cake/rpc/service"

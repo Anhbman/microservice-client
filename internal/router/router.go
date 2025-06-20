@@ -1,8 +1,8 @@
 package router
 
 import (
+	"client/internal/auth"
 	"client/internal/handler"
-	"client/jwt"
 	"os"
 
 	"github.com/labstack/echo/v4"
@@ -19,7 +19,7 @@ func NewRouter(h *handler.Handler) *Router {
 }
 
 func (r *Router) Register(e *echo.Echo) {
-	jwtMiddleware := jwt.JWT()
+	jwtMiddleware := auth.JWT()
 
 	apiGroup := e.Group("/api")
 

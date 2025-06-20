@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"client/utils"
+	"client/internal/utils"
 	"net/http"
 	"strconv"
 

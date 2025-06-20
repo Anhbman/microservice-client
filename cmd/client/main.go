@@ -1,7 +1,7 @@
 package main
 
 import (
-	"client/common"
+	"client/internal/common"
 	"client/internal/handler"
 	"client/internal/router"
 	"log"
