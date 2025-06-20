@@ -1,7 +1,7 @@
 package router
 
 import (
-	"client/handler"
+	"client/internal/handler"
 	"client/jwt"
 	"os"
 

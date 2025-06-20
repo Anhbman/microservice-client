@@ -2,8 +2,8 @@ package main
 
 import (
 	"client/common"
-	"client/handler"
-	"client/router"
+	"client/internal/handler"
+	"client/internal/router"
 	"log"
 	"net/http"
 	"os"
