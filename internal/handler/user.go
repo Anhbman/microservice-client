@@ -36,15 +36,22 @@ func (h *Handler) RegisterUser(ctx echo.Context) error {
 		return ctx.JSON(http.StatusBadRequest, "password are required")
 	}
 
-	newUser, err := h.serviceClient.RegisterUser(ctx.Request().Context(), req)
+	// newUser, err := h.serviceClient.RegisterUser(ctx.Request().Context(), req)
+	// if err != nil {
+	// 	twerr, ok := err.(twirp.Error)
+	// 	if ok {
+	// 		return ctx.JSON(twirp.ServerHTTPStatusFromErrorCode(twerr.Code()), twerr.Msg())
+	// 	}
+	// 	return ctx.JSON(http.StatusInternalServerError, err.Error())
+	// }
+	// return ctx.JSON(http.StatusOK, newUser)
+
+	err := h.userService.RegisterUser(req)
 	if err != nil {
-		twerr, ok := err.(twirp.Error)
-		if ok {
-			return ctx.JSON(twirp.ServerHTTPStatusFromErrorCode(twerr.Code()), twerr.Msg())
-		}
 		return ctx.JSON(http.StatusInternalServerError, err.Error())
 	}
-	return ctx.JSON(http.StatusOK, newUser)
+
+	return ctx.JSON(http.StatusOK, "Registration request received and being processed")
 }
 
 func (h *Handler) LoginUser(ctx echo.Context) error {

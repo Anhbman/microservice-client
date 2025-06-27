@@ -1,13 +1,19 @@
 package handler
 
-import "github.com/Anhbman/microservice-server-cake/rpc/service"
+import (
+	"client/internal/service"
+
+	serverService "github.com/Anhbman/microservice-server-cake/rpc/service"
+)
 
 type Handler struct {
-	serviceClient service.Service
+	serviceClient serverService.Service
+	userService   *service.UserService
 }
 
-func NewHandler(serviceClient service.Service) *Handler {
+func NewHandler(serviceClient serverService.Service, userService *service.UserService) *Handler {
 	return &Handler{
 		serviceClient: serviceClient,
+		userService:   userService,
 	}
 }

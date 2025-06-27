@@ -9,3 +9,12 @@ services:
       - 8080:8083
     env_file:
         - ../.env
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"       # AMQP port (giao tiếp với app)
+      - "15672:15672"     # UI web port
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
