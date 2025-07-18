@@ -8,12 +8,12 @@ import (
 
 type Handler struct {
 	serviceClient serverService.Service
-	userService   *service.UserService
+	eventService  *service.EventService
 }
 
-func NewHandler(serviceClient serverService.Service, userService *service.UserService) *Handler {
+func NewHandler(serviceClient serverService.Service, eventService *service.EventService) *Handler {
 	return &Handler{
 		serviceClient: serviceClient,
-		userService:   userService,
+		eventService:  eventService,
 	}
 }

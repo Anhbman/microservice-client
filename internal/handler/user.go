@@ -6,6 +6,7 @@ import (
 
 	"github.com/Anhbman/microservice-server-cake/rpc/service"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/gommon/log"
 	"github.com/twitchtv/twirp"
 )
 
@@ -46,8 +47,13 @@ func (h *Handler) RegisterUser(ctx echo.Context) error {
 	// }
 	// return ctx.JSON(http.StatusOK, newUser)
 
-	err := h.userService.RegisterUser(req)
+	err := h.eventService.PublishUserRegistered(ctx.Request().Context(), &service.RegisterUserRequest{
+		Name:     req.GetName(),
+		Email:    req.GetEmail(),
+		Password: req.GetPassword(),
+	})
 	if err != nil {
+		log.Errorf("Failed to publish user registered event: %v", err)
 		return ctx.JSON(http.StatusInternalServerError, err.Error())
 	}
 

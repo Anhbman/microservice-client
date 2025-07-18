@@ -2,6 +2,7 @@ package main
 
 import (
 	"client/internal/common"
+	"client/internal/config"
 	"client/internal/handler"
 	"client/internal/messaging"
 	"client/internal/router"
@@ -26,29 +27,25 @@ func main() {
 	e := echo.New()
 
 	// Initialize RabbitMQ
-	rabbitMQConfig := messaging.Config{
-		Host:        "localhost",
-		Port:        5672,
-		Username:    "guest",
-		Password:    "guest",
-		VirtualHost: "/",
-	}
-
-	conn, err := messaging.NewConnection(rabbitMQConfig)
+	rabbitMQConfig, err := config.LoadRabbitMQConfig()
 	if err != nil {
-		log.Fatalf("Failed to connect to RabbitMQ: %v", err)
+		log.Fatalf("Failed to load RabbitMQ config: %v", err)
 	}
 
-	// Initialize Publisher
-	publisher, err := messaging.NewPublisher(conn)
+	eventManager, err := messaging.NewEventManager(*rabbitMQConfig)
 	if err != nil {
-		log.Fatalf("Failed to create publisher: %v", err)
+		log.Fatalf("Failed to create event manager: %v", err)
 	}
 
-	userService := clientService.NewUserService(publisher)
+	// Register all events
+	if err := eventManager.RegisterEvents(); err != nil {
+		log.Fatalf("Failed to register events: %v", err)
+	}
+
+	eventService := clientService.NewEventService(eventManager)
 
 	client := service.NewServiceJSONClient(os.Getenv("SERVICE_ENDPOINT"), &http.Client{})
-	handlers := handler.NewHandler(client, userService)
+	handlers := handler.NewHandler(client, eventService)
 	router := router.NewRouter(handlers)
 	router.Register(e)
 
