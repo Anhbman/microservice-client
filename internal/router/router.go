@@ -39,6 +39,10 @@ func (r *Router) Register(e *echo.Echo) {
 	user := apiGroup.Group("/users", jwtMiddleware)
 	user.GET("/current", r.Handler.CurrentUser)
 
+	// register product routes
+	product := apiGroup.Group("/products")
+	product.POST("", r.Handler.CreateProduct)
+
 	// Serve static files (profile pictures) from the 'picture' directory.
 	e.Static("/picture", os.Getenv("PATH_TO_UPLOAD"))
 }
