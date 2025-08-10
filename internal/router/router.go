@@ -42,6 +42,8 @@ func (r *Router) Register(e *echo.Echo) {
 	// register product routes
 	product := apiGroup.Group("/products")
 	product.POST("", r.Handler.CreateProduct)
+	product.GET("/:id", r.Handler.GetProductByID)
+	product.GET("", r.Handler.GetAllProducts)
 
 	// Serve static files (profile pictures) from the 'picture' directory.
 	e.Static("/picture", os.Getenv("PATH_TO_UPLOAD"))
