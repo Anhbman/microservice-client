@@ -23,7 +23,8 @@ func (r *Router) Register(e *echo.Echo) {
 
 	apiGroup := e.Group("/api")
 
-	// register auth routes
+	apiGroup.GET("/cakes", r.Handler.GetAllCakes)
+
 	cake := apiGroup.Group("/cakes", jwtMiddleware)
 	cake.GET("/:id", r.Handler.GetByID)
 	cake.POST("", r.Handler.Create)
@@ -40,10 +41,10 @@ func (r *Router) Register(e *echo.Echo) {
 	user.GET("/current", r.Handler.CurrentUser)
 
 	// register product routes
-	product := apiGroup.Group("/products")
-	product.POST("", r.Handler.CreateProduct)
-	product.GET("/:id", r.Handler.GetProductByID)
-	product.GET("", r.Handler.GetAllProducts)
+	product := apiGroup.Group("/orders", jwtMiddleware)
+	product.POST("", r.Handler.CreateOrder)
+	product.GET("/:id", r.Handler.GetOrderByID)
+	// product.GET("", r.Handler.GetAllProducts)
 
 	// Serve static files (profile pictures) from the 'picture' directory.
 	e.Static("/picture", os.Getenv("PATH_TO_UPLOAD"))

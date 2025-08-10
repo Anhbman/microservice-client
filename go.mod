@@ -3,7 +3,7 @@ module client
 go 1.24.3
 
 require (
-	github.com/Anhbman/microservice-server-cake v0.0.0-20250810065151-e8d465446f2f
+	github.com/Anhbman/microservice-server-cake v0.0.0-20250810175937-5b18f7e8c562
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/google/uuid v1.6.0
 	github.com/joho/godotenv v1.5.1

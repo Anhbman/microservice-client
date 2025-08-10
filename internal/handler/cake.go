@@ -42,17 +42,17 @@ func (h *Handler) Create(ctx echo.Context) error {
 		return ctx.JSON(http.StatusBadRequest, "price is required")
 	}
 	cake.UserId = userIdFromToken(ctx)
-	file, err := ctx.FormFile("image")
-	if err != nil {
-		log.Errorf("Invalid data!")
-	}
+	// file, err := ctx.FormFile("image")
+	// if err != nil {
+	// 	log.Errorf("Invalid data!")
+	// }
 
-	fileName, err := utils.SaveFile(file)
-	if err != nil {
-		log.Errorf("Failed to save file!", err)
-	} else {
-		cake.ImageUrl = fileName
-	}
+	// fileName, err := utils.SaveFile(file)
+	// if err != nil {
+	// 	log.Errorf("Failed to save file!", err)
+	// } else {
+	// 	cake.ImageUrl = fileName
+	// }
 
 	newCake, err := h.serviceClient.CreateCake(ctx.Request().Context(), &cake)
 	if err != nil {
@@ -147,4 +147,13 @@ func (h *Handler) UpdateByID(ctx echo.Context) error {
 	}
 
 	return ctx.JSON(http.StatusOK, newCake)
+}
+
+func (h *Handler) GetAllCakes(ctx echo.Context) error {
+	cakes, err := h.serviceClient.GetAllCakes(ctx.Request().Context(), &service.GetAllCakesRequest{})
+	if err != nil {
+		return ctx.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	return ctx.JSON(http.StatusOK, cakes)
 }
